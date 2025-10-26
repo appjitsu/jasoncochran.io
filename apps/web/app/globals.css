@@ -1,0 +1,309 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@layer theme {
+  :root {
+    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+
+    --color-primary: #2563eb;
+    --color-primary-dark: #1d4ed8;
+
+    --background: #ffffff;
+    --foreground: #0f172a;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background: #0f172a;
+      --foreground: #f1f5f9;
+    }
+  }
+}
+
+@layer base {
+  * {
+    @apply box-border m-0 p-0;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply antialiased;
+    color: var(--foreground);
+    background: var(--background);
+    font-family: var(--font-sans);
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-gradient {
+  animation: gradient 8s ease infinite;
+  background-size: 200% 200%;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* Grid pattern background */
+.grid-pattern {
+  background-image:
+    linear-gradient(to right, rgba(100, 116, 139, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(100, 116, 139, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.dark .grid-pattern {
+  background-image:
+    linear-gradient(to right, rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass {
+  background: rgba(15, 23, 42, 0.3);
+  border: 1px solid rgba(71, 85, 105, 0.3);
+}
+
+/* Enhanced Typography */
+.prose,
+.prose-lg {
+  @apply text-slate-700 dark:text-slate-300;
+}
+
+.prose h1,
+.prose-lg h1 {
+  @apply text-slate-900 dark:text-white font-bold tracking-tight;
+}
+
+.prose h2,
+.prose-lg h2 {
+  @apply text-slate-900 dark:text-white font-bold tracking-tight mt-12 mb-6;
+}
+
+.prose h3,
+.prose-lg h3 {
+  @apply text-slate-900 dark:text-white font-semibold mt-8 mb-4;
+}
+
+.prose p,
+.prose-lg p {
+  @apply text-slate-700 dark:text-slate-300 leading-8;
+}
+
+.prose strong,
+.prose-lg strong {
+  @apply text-slate-900 dark:text-white font-bold;
+}
+
+.prose a,
+.prose-lg a {
+  @apply text-blue-600 dark:text-blue-400 font-medium no-underline hover:underline;
+}
+
+.prose ul,
+.prose-lg ul {
+  @apply text-slate-700 dark:text-slate-300;
+}
+
+.prose li,
+.prose-lg li {
+  @apply text-slate-700 dark:text-slate-300 leading-7;
+}
+
+/* Syntax Highlighting for Code Blocks */
+.prose pre,
+.prose-lg pre {
+  @apply overflow-x-auto rounded-xl shadow-lg;
+  background: linear-gradient(to bottom, #f6f8fa, #ffffff) !important;
+  border: 1px solid #d0d7de !important;
+  padding: 1.25rem !important;
+  margin: 0 !important;
+}
+
+.dark .prose pre,
+.dark .prose-lg pre {
+  background: linear-gradient(to bottom, #0d1117, #010409) !important;
+  border: 1px solid #30363d !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
+.prose pre code,
+.prose-lg pre code {
+  @apply leading-7;
+  display: grid !important;
+  background: transparent !important;
+  padding: 0 !important;
+  font-weight: 400;
+  color: #24292f !important;
+  font-size: 0.925rem;
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', 'Roboto Mono', monospace;
+}
+
+.dark .prose pre code,
+.dark .prose-lg pre code {
+  color: #e6edf3 !important;
+}
+
+.prose pre code span,
+.prose-lg pre code span {
+  color: var(--shiki-light, #24292f) !important;
+}
+
+.dark .prose pre code span,
+.dark .prose-lg pre code span {
+  color: var(--shiki-dark, #e6edf3) !important;
+}
+
+/* Ensure comments have good contrast */
+.prose pre code span[style*="--shiki-light:#6A737D"],
+.prose-lg pre code span[style*="--shiki-light:#6A737D"] {
+  color: #57606a !important;
+  font-style: italic;
+}
+
+.dark .prose pre code span[style*="--shiki-dark:#6A737D"],
+.dark .prose-lg pre code span[style*="--shiki-dark:#6A737D"] {
+  color: #8b949e !important;
+  font-style: italic;
+}
+
+.prose pre code [data-line],
+.prose-lg pre code [data-line] {
+  @apply px-4;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.prose pre code [data-line]:hover {
+  background-color: rgba(110, 118, 129, 0.08);
+}
+
+.dark .prose pre code [data-line]:hover {
+  background-color: rgba(110, 118, 129, 0.15);
+}
+
+.prose pre code [data-highlighted-line],
+.prose-lg pre code [data-highlighted-line] {
+  background-color: rgba(56, 139, 253, 0.1);
+  border-left: 3px solid #388bfd;
+  padding-left: calc(1rem - 3px);
+}
+
+.dark .prose pre code [data-highlighted-line],
+.dark .prose-lg pre code [data-highlighted-line] {
+  background-color: rgba(56, 139, 253, 0.15);
+  border-left: 3px solid #58a6ff;
+  padding-left: calc(1rem - 3px);
+}
+
+.prose pre code [data-highlighted-chars],
+.prose-lg pre code [data-highlighted-chars] {
+  @apply bg-blue-500/20 rounded px-1;
+  box-shadow: 0 0 0 2px rgba(56, 139, 253, 0.3);
+}
+
+/* Inline code */
+.prose :not(pre) > code,
+.prose-lg :not(pre) > code {
+  @apply rounded font-mono font-semibold;
+  background-color: #eff1f3 !important;
+  color: #c9356a !important;
+  border: 1px solid #d8dee4 !important;
+  padding: 0.15rem 0.4rem !important;
+  font-size: 0.875em !important;
+  white-space: nowrap;
+}
+
+.dark .prose :not(pre) > code,
+.dark .prose-lg :not(pre) > code {
+  background-color: #1c2128 !important;
+  color: #ff7b72 !important;
+  border: 1px solid #30363d !important;
+}
+
+/* Remove the backticks that prose adds */
+.prose :not(pre) > code::before,
+.prose :not(pre) > code::after,
+.prose-lg :not(pre) > code::before,
+.prose-lg :not(pre) > code::after {
+  content: '' !important;
+}
+
+/* Better blockquotes */
+.prose blockquote,
+.prose-lg blockquote {
+  @apply border-l-4 border-blue-500 bg-blue-50 dark:bg-blue-950/30 rounded-r-lg;
+  padding: 1rem 1.5rem !important;
+  font-style: italic;
+}
+
+.prose blockquote p,
+.prose-lg blockquote p {
+  @apply text-slate-700 dark:text-slate-300;
+}
+
+/* Better tables */
+.prose table,
+.prose-lg table {
+  @apply rounded-lg overflow-hidden shadow-md;
+}
+
+.prose thead,
+.prose-lg thead {
+  @apply bg-slate-100 dark:bg-slate-800;
+}
+
+.prose th,
+.prose-lg th {
+  @apply text-slate-900 dark:text-white font-bold;
+}
+
+.prose td,
+.prose-lg td {
+  @apply border-slate-200 dark:border-slate-700;
+}
