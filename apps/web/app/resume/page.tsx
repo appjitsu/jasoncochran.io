@@ -305,18 +305,6 @@ export default function Resume() {
         </div>
       </section>
 
-      {/* Education */}
-      <section className="mb-12">
-        <h2 className="text-2xl font-bold mb-4 border-b border-gray-200 dark:border-gray-800 pb-2">
-          Education
-        </h2>
-        <div>
-          <h3 className="text-xl font-semibold">High School Diploma</h3>
-          <p className="text-gray-600 dark:text-gray-400">Odessa High School</p>
-          <p className="text-gray-500 dark:text-gray-400">Odessa, TX - Graduated 1994</p>
-        </div>
-      </section>
-
       {/* Download Button */}
       <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
         <a
