@@ -126,7 +126,7 @@ export default function Home() {
                   {/* Photo Container */}
                   <div className="relative w-full h-full bg-gradient-to-br from-slate-200 to-slate-300 dark:from-slate-800 dark:to-slate-700 rounded-3xl shadow-2xl overflow-hidden border-4 border-white dark:border-slate-900">
                     <Image
-                      src="/jason_cochran_photo.png"
+                      src="/jason_cochran_photo2.png"
                       alt="Jason Cochran - Senior Software Engineer"
                       fill
                       className="object-cover"
